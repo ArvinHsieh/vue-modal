@@ -135,6 +135,10 @@ export default {
       type: Boolean,
       default: true
     },
+	enableEscClose: {
+      type: Boolean,
+      default: true
+    },
     basedOn: {
       type: Boolean,
       default: false
@@ -179,12 +183,12 @@ export default {
       }
     },
     clickOutside (e) {
-      if (e.target === this.$refs['vm-wrapper']) {
+      if (e.target === this.$refs['vm-wrapper'] && this.enableWrapperClose) {
         this.close();
       }
     },
     keydown (e) {
-      if (e.which === 27) {
+      if (e.which === 27 && this.enableEscClose) {
         this.close();
       }
       if (e.which === 9) {

@@ -270,6 +270,14 @@ var script = {
       type: Boolean,
       default: true
     },
+    enableWrapperClose: {
+      type: Boolean,
+      default: true
+    },
+	enableEscClose: {
+      type: Boolean,
+      default: true
+    },
     basedOn: {
       type: Boolean,
       default: false
@@ -316,12 +324,12 @@ var script = {
       }
     },
     clickOutside: function clickOutside (e) {
-      if (e.target === this.$refs['vm-wrapper']) {
+      if (e.target === this.$refs['vm-wrapper'] && this.enableWrapperClose) {
         this.close();
       }
     },
     keydown: function keydown (e) {
-      if (e.which === 27) {
+      if (e.which === 27 && this.enableEscClose) {
         this.close();
       }
       if (e.which === 9) {
@@ -595,7 +603,7 @@ var __vue_render__ = function() {
                       class: ["vm-wrapper", _vm.wrapperClass, _vm.id],
                       style: {
                         "z-index": _vm.zIndex,
-                        cursor: _vm.enableClose ? "pointer" : "default"
+                        cursor: _vm.enableWrapperClose ? "pointer" : "default"
                       },
                       attrs: { tabindex: "0" },
                       on: {
