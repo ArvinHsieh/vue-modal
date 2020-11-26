@@ -28,7 +28,7 @@
           ref="vm-wrapper"
           tabindex="0"
           :class="['vm-wrapper', wrapperClass, id]"
-          :style="{ 'z-index': zIndex, cursor: enableClose ? 'pointer' : 'default' }"
+          :style="{ 'z-index': zIndex, cursor: enableWrapperClose ? 'pointer' : 'default' }"
           @click="clickOutside($event)"
           @keydown="keydown($event)"
         >
@@ -128,6 +128,10 @@ export default {
       default: false
     },
     enableClose: {
+      type: Boolean,
+      default: true
+    },
+    enableWrapperClose: {
       type: Boolean,
       default: true
     },
